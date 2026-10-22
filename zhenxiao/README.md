@@ -6,7 +6,7 @@
 - 后端：FastAPI + SQLAlchemy + LangGraph（Python 3.11+，本机以 3.10 验证可用）
 - 前端：Vue 3 + Vite + Element Plus + Pinia
 - 数据库：MySQL 或 SQLite（未配置 MySQL 时自动回落 SQLite）
-- 依据文档：《01-需求规格说明书》V1.0（系统版本 v2.1.0）
+
 
 > 本文件是**快速上手**说明。完整的架构设计、接口清单、数据模型、核心机制与开发约定，
 > 见 [项目说明文档.md](项目说明文档.md)。
