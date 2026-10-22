@@ -13,7 +13,7 @@
 
 ## 一、启动
 
-### 1. 后端（127.0.0.1:8012）
+### 1. 后端
 
 ```bash
 cd backend
@@ -26,7 +26,7 @@ python -m uvicorn main:app --host 127.0.0.1 --port 8012
 - 健康检查：`GET http://127.0.0.1:8012/api/health` → `{"status":"ok"}`
 - 接口文档：`http://127.0.0.1:8012/docs`
 
-### 2. 前端（127.0.0.1:5178，规格书 4.1 / AC-2 指定端口）
+### 2. 前端
 
 ```bash
 cd web
@@ -51,7 +51,7 @@ npm run dev
 | M6 | 预约挂号 | `/appointments` | `GET /api/appointments/schedule`、`POST/DELETE /api/appointments` |
 | M7 | 系统设置 | `/settings` | `GET /api/settings`、`DELETE /api/sessions`（一键清空） |
 
-## 三、多 Agent 推理链路（规格书 3.8）
+## 三、多 Agent 推理链路
 
 ```
 RouterAgent → ContextAgent → ┬→ RAGAgent      (本地知识库召回，并发)
@@ -65,7 +65,7 @@ RouterAgent → ContextAgent → ┬→ RAGAgent      (本地知识库召回，�
 - `thinking_steps` 为人类可读推理步骤，`trace` 为 `AgentTrace(agent, action, detail, duration_ms)`。
 - 未配置大模型时，ReasoningAgent 直接短路到 FallbackAgent，不再空转修复循环。
 
-## 四、接口清单（规格书 4.2，共 19 个）
+## 四、接口清单
 
 | 方法 | 路径 |
 |---|---|
