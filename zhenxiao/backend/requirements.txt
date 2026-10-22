@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlalchemy>=2.0
+pymysql
+pydantic
+pydantic-settings
+langchain
+langgraph
+langchain-openai
+langchain-community
+flask
+tavily-python

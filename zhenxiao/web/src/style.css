@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-body);
+}
+
+:root {
+  --bg-page: #f5f7fa;
+  --bg-card: #ffffff;
+  --bg-soft: #f8fafc;
+  --bg-chat-ai: #f0f2f5;
+  --text-main: #1f2937;
+  --text-body: #333333;
+  --text-sub: #666666;
+  --text-muted: #999999;
+  --text-faint: #aaaaaa;
+  --border: #f0f0f0;
+}
+
+html.dark {
+  --bg-page: #141414;
+  --bg-card: #1d1e1f;
+  --bg-soft: #262727;
+  --bg-chat-ai: #2a2b2c;
+  --text-main: #e5e7eb;
+  --text-body: #d1d5db;
+  --text-sub: #9ca3af;
+  --text-muted: #6b7280;
+  --text-faint: #555555;
+  --border: #2d2e2f;
+}

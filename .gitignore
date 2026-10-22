@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+venv313/
+.eggs/
+build/
+dist/
+
+# Node / Vite
+node_modules/
+web/dist/
+
+# IDE
+.idea/
+.vscode/
+
+# Claude Code local config
+.claude/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Local secrets / environment
+.env
+.env.*
+config_local.py
+
+# Large local model weights (if later placed in zhenxiao/model/)
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
