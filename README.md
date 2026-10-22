@@ -4,7 +4,7 @@
 |---|---|
 | 产品名称 | 诊小通 Agent |
 | 系统版本 | v2.1.0 |
-| 项目类型 | 互联网医院智能服务平台（企业级医疗 AI 应用） |
+| 项目类型 | 互联网医院智能服务平台 |
 | 代码位置 | `zhenxiao/backend`（后端）、`zhenxiao/web`（前端） |
 
 ---
@@ -293,7 +293,7 @@ appointments（按 user_id 独立）
 |---|---|---|
 | `id` | BigInteger PK | 自增 |
 | `session_id` / `user_id` | String | 会话 / 用户 |
-| `scene` | String(32) | `triage` / `consultation` / `medication`（三类统一落库） |
+| `scene` | String(32) | `triage` / `consultation` / `medication` |
 | `chief_complaint` | Text | 主诉 |
 | `risk_level` | String(16) | 风险等级 |
 | `department` | String(64) | 推荐科室 |
@@ -335,7 +335,7 @@ appointments（按 user_id 独立）
 
 ### 6.2 降级模式：无 Key 也能给出有效回答
 
-未配置大模型时，`ReasoningAgent` 置 `llm_skipped`，图条件边**直达 FallbackAgent**（不做无意义的 Reasoning↔Formatter 空转）。兜底回答结构：
+未配置大模型时，`ReasoningAgent` 置 `llm_skipped`，图条件边**直达 FallbackAgent**（不做 Reasoning↔Formatter 空转）。兜底回答结构：
 
 ```
 ① 结合本地知识库回答用户问题
@@ -368,8 +368,7 @@ appointments（按 user_id 独立）
 
 > 以上内容仅用于健康科普和就医参考，不能替代医生诊断、处方或治疗。
 
-### 6.4 科室收敛（规格书 3.1）
-
+### 6.4 科室收敛
 推荐科室必须落在附录 A 的 15 个科室内，采用**三重收敛**：
 
 1. 三个场景的 SystemPrompt 注入科室清单，明确禁止自造科室名；
@@ -505,9 +504,6 @@ npm run build        # 生产构建，产物在 dist/
 
 | 系统环境变量 | 配置字段 | 说明 |
 |---|---|---|
-| `DASHSCOPE_API_KEY_2` | `dashscope_api_key_2` | 大模型 API Key（留空 = 降级模式） |
-| `DASHSCOPE_BASE_URL` | `dashscope_base_url` | OpenAI 兼容端点 |
-| `DASHSCOPE_CHAT_MODEL` | `dashscope_chat_model` | 模型名 |
 | `TAVILY_API_KEY` | `tavily_api_key` | 联网检索 Key（可选） |
 | `RAG_TOP_K` | `rag_top_k` | 检索条数，默认 6 |
 | `DEEP_SEARCH_ENABLED` | `deep_search_enabled` | 联网检索总开关 |
@@ -564,8 +560,6 @@ esbuild 在 Windows 上删除临时目录失败的宿主机问题（与项目代
 ## 九、测试与验收
 
 ### 9.1 验证方式
-
-开发阶段使用过三个临时测试脚本（接口自测、降级回答质量检查、端到端验收），**交付前已按"只保留最终代码"的要求删除**。后续如需回归，可按以下方式验证。
 
 **接口可交互验证**：打开 `http://127.0.0.1:8012/docs`（Swagger UI），直接对 22 个端点发请求。
 
