@@ -331,7 +331,7 @@ appointments（按 user_id 独立）
 - **载入**：`data/knowledge_base/*.md`，按 `##` 二级标题切块（当前 13 篇 → 49 个知识块）
 - **打分**：字符 2-gram 的 **TF-IDF + 余弦相似度**，纯 Python 实现，无向量数据库、无外部依赖
 - **返回**：`Evidence(source, title, score, content)`，`top_k` 由 `RAG_TOP_K` 配置（默认 6）
-- **设计取舍**：规格书 2.3 提到 chroma/milvus，而 2.4/3.9 要求"轻量关键词倒排/余弦相似度"，本项目采用后者
+
 
 ### 6.2 降级模式：无 Key 也能给出有效回答
 
