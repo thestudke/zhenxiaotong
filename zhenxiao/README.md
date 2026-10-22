@@ -9,7 +9,7 @@
 
 
 > 本文件是**快速上手**说明。完整的架构设计、接口清单、数据模型、核心机制与开发约定，
-> 见 [项目说明文档.md](项目说明文档.md)。
+> 见 [README.md](README.md)。
 
 ## 一、启动
 
@@ -18,7 +18,7 @@
 ```bash
 cd backend
 pip install -r requirements.txt
-# 环境变量：复制模板后按需填写（可全部留空，走降级模式）
+# 环境变量：（可全部留空，走降级模式）
 copy model\.env.example model\.env
 python -m uvicorn main:app --host 127.0.0.1 --port 8012
 ```
@@ -95,7 +95,7 @@ RouterAgent → ContextAgent → ┬→ RAGAgent      (本地知识库召回，�
 
 接口可交互验证：打开 `http://127.0.0.1:8012/docs`，或在系统设置页查看模型/联网状态。
 
-关键路径的验收标准（规格书第 7 章 AC-1~AC-10）建议按以下方式人工核对：
+关键路径的验收标准建议按以下方式人工核对：
 
 | 验收项 | 核对方式 |
 |---|---|
@@ -153,7 +153,8 @@ python -m uvicorn main:app --host 127.0.0.1 --port 8012
 
 ### 2. 未配置 Key 时会怎样？
 
-系统仍可完整使用（规格书 2.4）：RouterAgent 直接短路到 FallbackAgent，由**本地规则 + RAG 知识库摘要**给出"先解答、后建议"的科普回答，并附免责声明。此时 `/api/settings` 显示 `llm_enabled: false`、回答 `metrics.mode = "fallback"`、`metrics.answer_source = "kb_summary"`。
+系统仍可完整使用：RouterAgent 直接短路到 FallbackAgent，由**本地规则 + RAG 知识库摘要**给出"先解答、后建议"的科普回答，并附免责声明。
+此时 `/api/settings` 显示 `llm_enabled: false`、回答 `metrics.mode = "fallback"`、`metrics.answer_source = "kb_summary"`。
 
 ### 3. `vite build` 报 `EPERM: remove ...esbuild-xxx`？
 
@@ -161,7 +162,7 @@ esbuild 在 Windows 上删临时目录失败的宿主机问题（与项目代码
 
 ### 4. 参考依据里出现"联网检索暂不可用"？
 
-这条是降级占位证据（规格书 3.10），说明 ResearchAgent 这次没拿到真实联网结果。先看服务自报的原因：
+说明 ResearchAgent 这次没拿到真实联网结果。先看服务自报的原因：
 
 ```powershell
 curl http://127.0.0.1:8012/api/settings
